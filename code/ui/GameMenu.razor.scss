@@ -1,0 +1,55 @@
+.gamemainmenu {
+	background-color: #000;
+	color: white;
+	flex-direction: column;
+	font-size: 25px;
+	height: 100%;
+	opacity: 1;
+	padding: 0.1vh 0.1vw;
+	position: absolute;
+	transition: opacity 1s ease-out;
+	transition: transform 1s ease-out;
+	width: 200%; //for the animtion
+
+	&:intro {
+		opacity: 0;
+		transform: translateX( -100% );
+	}
+
+	&.ingame {
+		background-color: #151313ee;
+	}
+
+	.navigator-canvas {
+		flex-grow: 1;
+		flex-shrink: 0;
+		height: 100%;
+		width: 50%;
+	}
+}
+
+.game-title {
+	font-family: ClockBlockers;
+	font-size: 64px;
+	opacity: 1;
+	text-transform: uppercase;
+
+	.glow {
+		left: 0;
+		margin: 0;
+		position: absolute;
+		//text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #e469e9, 0 0 80px #e469e9, 0 0 90px #e469e9, 0 0 100px #e469e9;
+		text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 15px #f0f, 0 0 22px #f0f, 0 0 38px #f0f, 0 0 40px #f0f, 0 0 100px #f0f, 0 0 110px #f0f;
+		top: 0;
+	}
+}
+
+.navigator-body {
+	flex-direction: column;
+	height: 100vh;
+	left: 0;
+	padding: 100px;
+	position: absolute;
+	top: 0;
+	width: 100vw;
+}
