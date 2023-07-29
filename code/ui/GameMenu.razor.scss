@@ -30,7 +30,7 @@
 
 .game-title {
 	font-family: ClockBlockers;
-	font-size: 64px;
+	font-size: 72px;
 	opacity: 1;
 	text-transform: uppercase;
 
@@ -38,8 +38,7 @@
 		left: 0;
 		margin: 0;
 		position: absolute;
-		//text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #e469e9, 0 0 80px #e469e9, 0 0 90px #e469e9, 0 0 100px #e469e9;
-		text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 15px #f0f, 0 0 22px #f0f, 0 0 38px #f0f, 0 0 40px #f0f, 0 0 100px #f0f, 0 0 110px #f0f;
+		text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 15px #f0f, 0 0 22px #f0f;
 		top: 0;
 	}
 }
