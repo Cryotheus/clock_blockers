@@ -5,11 +5,17 @@
 
 @namespace ClockBlockers.UI.GameMenu
 
-<root>
-    <div class="game-title">
-        @Game.Menu.Package.Title
-        <div class="glow">
-            @Game.Menu.Package.Title
-        </div>
-    </div>
+<root class="root-front">
+	<div class="game-title">
+		@Game.Menu.Package.Title
+		<div class="glow">
+			@Game.Menu.Package.Title
+		</div>
+	</div>
+	<div class="buttons">
+		<a>Start Session</a>
+		<a>Browse Sessions</a>
+		<spacer></spacer>
+		<a>Quit</a>
+	</div>
 </root>

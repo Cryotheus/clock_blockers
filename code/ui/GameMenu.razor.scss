@@ -1,19 +1,19 @@
 .gamemainmenu {
 	background-color: #000;
+	background-image: url( "menu/gameplay.webm" );
 	color: white;
 	flex-direction: column;
 	font-size: 25px;
-	height: 100%;
+	height: 100vh;
 	opacity: 1;
-	padding: 0.1vh 0.1vw;
 	position: absolute;
 	transition: opacity 1s ease-out;
-	transition: transform 1s ease-out;
-	width: 200%; //for the animtion
+	transition: transform 0.65s ease-out;
+	width: 200vw; //for the animtion
 
 	&:intro {
 		opacity: 0;
-		transform: translateX( -100% );
+		transform: translateX( -100vw );
 	}
 
 	&.ingame {
@@ -21,10 +21,23 @@
 	}
 
 	.navigator-canvas {
+		backdrop-filter: blur( 10px );
+		backdrop-filter: brightness( 0.3 );
 		flex-grow: 1;
 		flex-shrink: 0;
-		height: 100%;
-		width: 50%;
+		opacity: 1;
+		height: 100vh;
+		width: 100vw;
+
+		.navigator-body {
+			flex-direction: column;
+			height: 100vh;
+			left: 0;
+			padding: 100px;
+			position: absolute;
+			top: 0;
+			width: 100vw;
+		}
 	}
 }
 
@@ -43,12 +56,34 @@
 	}
 }
 
-.navigator-body {
-	flex-direction: column;
-	height: 100vh;
-	left: 0;
-	padding: 100px;
-	position: absolute;
-	top: 0;
-	width: 100vw;
+.root-front {
+	.buttons {
+		flex-direction: column;
+		flex-grow: 1;
+		flex-shrink: 0;
+		margin: 56px 16px;
+
+		a {
+			cursor: pointer;
+			font-family: Verdana;
+			font-size: 28px;
+			font-weight: bold;
+			margin-bottom: 24px;
+			text-transform: uppercase;
+
+			text-shadow: 0 0 4px #fff, 0 0 15px #0ff;
+
+			&:hover {
+				text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 15px #0ff, 0 0 22px #0ff;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		spacer {
+			height: 56px;
+		}
+	}
 }
