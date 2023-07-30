@@ -7,7 +7,7 @@
 @inherits Sandbox.UI.NavHostPanel
 @namespace ClockBlockers.UI.GameMenu
 
-<root class="gamemainmenu">
+<root class="game-main-menu">
 	<div class="navigator-canvas" slot="navigator-canvas"></div>
 </root>
 
@@ -19,7 +19,7 @@
 
 		AddDestination( "/", typeof(FrontPage));
 		//AddDestination( "/load", typeof(LoadGamePage));
-		//AddDestination( "/create", typeof(CreateGamePage));
+		AddDestination( "/create", typeof(CreateGamePage));
 		//AddDestination(  "/active", typeof(ActivePage));
 		//AddDestination( "/servers", typeof(ServerListPage));
 		//AddDestination( "/settings", typeof(SettingsPage));
