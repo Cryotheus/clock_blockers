@@ -4,7 +4,7 @@ FullName: ClockBlockers
 FamilyName: ClockBlockers
 Weight: Regular
 Copyright: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-Version: 0.200;FontForge 1 Jan 2023
+Version: 0.300;FontForge 1 Jan 2023
 ItalicAngle: 0
 UnderlinePosition: -307
 UnderlineWidth: 102
@@ -22,7 +22,7 @@ OS2Version: 4
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 0
 CreationTime: 1625793571
-ModificationTime: 1690675107
+ModificationTime: 1690675579
 PfmFamily: 81
 TTFWeight: 400
 TTFWidth: 5
@@ -78,7 +78,7 @@ ShortTable: maxp 16
   0
   0
 EndShort
-LangName: 1033 "Cryotheum 2023 MIT License" "" "" "0.200;ClockBlockersRegular" "" "0.200;FontForge 1 Jan 2023" "" "None" "None" "Cryotheum" "Inspired by Corridor Digital's video of the same name. Does not support the full alphabet in either case." "" "https://github.com/Cryotheus" "MIT" "" "" "ClockBlockers" "Regular" "" "CLOCK BLOCKERS"
+LangName: 1033 "Cryotheum 2023 MIT License" "" "" "0.300;ClockBlockersRegular" "" "0.300;FontForge 1 Jan 2023" "" "None" "None" "Cryotheum" "Inspired by Corridor Digital's video of the same name. Does not support the full alphabet in either case." "" "https://github.com/Cryotheus" "MIT" "" "" "ClockBlockers" "Regular" "" "CLOCK BLOCKERS"
 GaspTable: 1 65535 2 0
 Encoding: UnicodeBmp
 UnicodeInterp: none
@@ -86,7 +86,7 @@ NameList: AGL For New Fonts
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 0
-WinInfo: 0 52 16
+WinInfo: 0 58 19
 BeginPrivate: 0
 EndPrivate
 TeXData: 1 0 0 346030 173015 115343 0 -1048576 115343 783286 444596 497025 792723 393216 433062 380633 303038 157286 324010 404750 52429 2506097 1059062 262144
@@ -140,7 +140,7 @@ Encoding: 66 66 2
 Width: 1382
 GlyphClass: 2
 Flags: W
-HStem: 0 284<333 1048> 486 287<333 1020.5> 975 284<333 1019.2>
+HStem: 0 284<333 1048> 486 287<333 1020.5> 975 284<333 1020.5>
 VStem: 49 284<284 486 773 975> 1020.5 284<773 975> 1048 284<284 486>
 CounterMasks: 1 e0
 LayerCount: 2
@@ -178,8 +178,8 @@ Encoding: 67 67 3
 Width: 1359
 GlyphClass: 2
 Flags: W
-HStem: 0 284<333.29 1305> 975 284<333.29 1308>
-VStem: 49 284<284.29 974.71>
+HStem: 0 284<333 1305> 975 284<333 1308>
+VStem: 49 284<284 975>
 LayerCount: 2
 Fore
 SplineSet
@@ -205,8 +205,8 @@ Encoding: 69 69 4
 Width: 1382
 GlyphClass: 2
 Flags: W
-HStem: 0 284<333.29 1305> 489 284<333 1308> 975 284<333.29 1308>
-VStem: 49 284<284.29 489 773 974.71>
+HStem: 0 284<333 1305> 489 284<333 1308> 975 284<333 1308>
+VStem: 49 284<284 489 773 975>
 LayerCount: 2
 Fore
 SplineSet
@@ -233,27 +233,27 @@ EndChar
 
 StartChar: K
 Encoding: 75 75 5
-Width: 1187
+Width: 1179
 GlyphClass: 2
 Flags: W
-HStem: 0 21G<42 326 837.748 1172> 1239 20G<42 326>
-VStem: 42 284<0 316 650 1259>
+HStem: 0 21G<49 333 844.748 1179> 1239 20G<49 333>
+VStem: 49 284<0 316 650 1259>
 LayerCount: 2
 Fore
 SplineSet
-849 1289 m 1,0,-1
- 1138 1289 l 1,1,-1
- 681 694 l 1,2,3
- 681 694 681 694 1172 0 c 1,4,-1
- 852 0 l 1,5,-1
- 490 508 l 1,6,-1
- 326 316 l 1,7,-1
- 326 0 l 1,8,-1
- 42 0 l 1,9,-1
- 42 1259 l 1,10,-1
- 326 1259 l 1,11,-1
- 326 650 l 1,12,-1
- 849 1289 l 1,0,-1
+856 1289 m 1,0,-1
+ 1145 1289 l 1,1,-1
+ 688 694 l 1,2,3
+ 688 694 688 694 1179 0 c 1,4,-1
+ 859 0 l 1,5,-1
+ 497 508 l 1,6,-1
+ 333 316 l 1,7,-1
+ 333 0 l 1,8,-1
+ 49 0 l 1,9,-1
+ 49 1259 l 1,10,-1
+ 333 1259 l 1,11,-1
+ 333 650 l 1,12,-1
+ 856 1289 l 1,0,-1
 EndSplineSet
 EndChar
 
@@ -262,8 +262,8 @@ Encoding: 76 76 6
 Width: 1359
 GlyphClass: 2
 Flags: W
-HStem: 0 284<333.29 1308> 1239 20G<49 333>
-VStem: 49 284<284.29 1259>
+HStem: 0 284<333 1308> 1239 20G<49 333>
+VStem: 49 284<284 1259>
 LayerCount: 2
 Fore
 SplineSet
@@ -317,8 +317,8 @@ Encoding: 82 82 8
 Width: 1382
 GlyphClass: 2
 Flags: W
-HStem: 0 21G<49 333 1032.13 1312> 489 284<333 918> 975 284<333 1047.71>
-VStem: 49 284<0 489 773 975> 1048 284<773 974.71>
+HStem: 0 21G<49 333 1032.13 1312> 489 284<333 918> 975 284<333 1048>
+VStem: 49 284<0 489 773 975> 1048 284<773 975>
 LayerCount: 2
 Fore
 SplineSet
