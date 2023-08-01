@@ -1,3 +1,99 @@
+//elements
+h1, h2, h3, h4, h5, h6 {
+	font-family: Verdana;
+	font-weight: bold;
+	text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 15px #f0f, 0 0 22px #f0f;
+
+	&h1 {
+		font-size: 56px;
+		margin-bottom: 56px;
+	}
+
+	&h2 {
+		font-size: 46px;
+		margin-bottom: 46px;
+	}
+
+	&h3 {
+		font-size: 40px;
+		margin-bottom: 40px;
+	}
+
+	&h4 {
+		font-size: 36px;
+		margin-bottom: 36px;
+	}
+
+	&h5 {
+		font-size: 32px;
+		margin-bottom: 32px;
+	}
+
+	&h6 {
+		font-size: 28px;
+		margin-bottom: 28px;
+	}
+}
+
+img.mdi-button {
+	cursor: pointer;
+	filter: invert(100%) drop-shadow(0px 0px 12vh #0ff8);
+	height: 5vh;
+	width: 5vh;
+
+	&:hover {
+		filter: drop-shadow(0px 0px 12vh #2fff);
+	}
+
+	&:active {
+		filter: drop-shadow(0px 0px 12vh #f0ff);
+	}
+}
+
+mapbutton {
+	height: 440px;
+}
+
+textentry {
+	background: #0007;
+	border: 4px solid #0005;
+	border-radius: 10px;
+}
+
+//classes
+.align-right {
+	flex-grow: 1;
+	overflow: hidden;
+	//position: absolute;
+}
+
+.button {
+	cursor: pointer;
+	font-family: Verdana;
+	font-size: 28px;
+	font-weight: bold;
+	margin-bottom: 24px;
+	margin-right: auto;
+	text-shadow: 0 0 4px #fff, 0 0 15px #0ff;
+	text-transform: uppercase;
+
+	&.center {
+		margin-right: 0;
+	}
+
+	&:hover {
+		text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 15px #0ff, 0 0 22px #0ff;
+	}
+
+	&:active {
+		text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 15px #f0f, 0 0 22px #f0f;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
 .columned {
 	flex-direction: column;
 }
@@ -13,16 +109,16 @@
 	position: absolute;
 	transition: opacity 1s ease-out;
 	transition: transform 0.65s ease-out;
-	width: 200vw; //for the animtion
-
-	&:intro {
-		opacity: 0;
-		transform: translateX( -100vw );
-	}
+	width: 100%; //for the animtion
 
 	&.ingame {
 		background-color: #0003;
 		background-image: none;
+	}
+
+	&:intro {
+		opacity: 0;
+		transform: translateY( -100% );
 	}
 
 	.navigator-canvas {
@@ -32,16 +128,16 @@
 		flex-shrink: 0;
 		height: 100%;
 		opacity: 1;
-		width: 100vw;
+		width: 100%;
 
 		.navigator-body {
 			flex-direction: column;
-			height: auto;
+			height: 100%;
 			left: 0;
 			padding: 100px;
 			position: absolute;
 			top: 0;
-			width: auto;
+			width: 100%;
 		}
 	}
 }
@@ -61,42 +157,8 @@
 	}
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-family: Verdana;
-	font-weight: bold;
-	text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 15px #f0f, 0 0 22px #f0f;
-
-	&h1 {font-size: 56px; margin-bottom: 56px;}
-	&h2 {font-size: 46px; margin-bottom: 46px;}
-	&h3 {font-size: 40px; margin-bottom: 40px;}
-	&h4 {font-size: 36px; margin-bottom: 36px;}
-	&h5 {font-size: 32px; margin-bottom: 32px;}
-	&h6 {font-size: 28px; margin-bottom: 28px;}
-}
-
-mapbutton {
-	//width: 480px;
-	//height: 480px;
-}
-
 .hidden {
 	display: none;
-}
-
-img.mdi-button {
-	cursor: pointer;
-	height: 5vh;
-	width: 5vh;
-  filter: invert(100%);
-	filter: drop-shadow(0px 0px 12vh #0ff8);
-
-	&:hover {
-		filter: drop-shadow(0px 0px 12vh #2fff);
-	}
-
-	&:active {
-		filter: drop-shadow(0px 0px 12vh #f0ff);
-	}
 }
 
 .navigation-bar {
@@ -107,35 +169,57 @@ img.mdi-button {
 	}
 }
 
+.root-browser {
+	flex-direction: column;
+
+	.simple-container {
+		.session-list {
+			flex-direction: column;
+			flex-grow: 1;
+			flex-shrink: 1;
+			margin-bottom: 78px; //.button's font + 50px
+			overflow: hidden;
+		}
+	}
+}
+
+.root-create {
+	position: relative;
+
+	.simple-container {
+		.pair {
+			.align-right {
+				padding-left: 50px;
+
+				.setting {
+					padding-top: 50px;
+				}
+			}
+		}
+	}
+}
+
 .root-front {
 	.buttons {
 		flex-direction: column;
 		margin: 56px 16px;
 
-		a {
-			cursor: pointer;
-			font-family: Verdana;
-			font-size: 28px;
-			font-weight: bold;
-			margin-bottom: 24px;
-			text-transform: uppercase;
-			text-shadow: 0 0 4px #fff, 0 0 15px #0ff;
-
-			&:hover {
-				text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 15px #0ff, 0 0 22px #0ff;
-			}
-
-			&:active {
-				text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 15px #f0f, 0 0 22px #f0f;
-			}
-
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
-
 		spacer {
 			height: 56px;
 		}
+	}
+}
+
+.simple-container {
+	flex-direction: column;
+	height: 100%;
+	position: relative;
+	width: 100%;
+
+	.footer {
+		bottom: 0;
+		justify-content: center;
+		position: absolute;
+		width: 100%;
 	}
 }

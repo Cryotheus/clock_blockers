@@ -1,21 +1,31 @@
-Hud
-{
-    .header
-    {
-        left: 128px;
-        top: 128px;
-        flex-direction: column;
+hud {
+	color: white;
+	font-family: Roboto;
+	position: relative;
 
-        label
-        {
-            font-family: Roboto;
-            color: white;
-            font-size: 32px;
+	.crosshair {
+		margin: auto;
+	}
 
-            &.subtitle
-            {
-                font-size: 16px;
-            }
-        }
-    }
+	.header {
+		flex-direction: column;
+		position: absolute;
+		text-align: center;
+		top: 0;
+		width: 100%;
+	}
+
+	.health {
+		bottom: 2vh;
+		left: 2vh;
+		position: absolute;
+
+		label {
+			margin-right: 10px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
 }

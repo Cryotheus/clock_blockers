@@ -13,19 +13,14 @@
 		</div>
 	</div>
 	<div class="buttons">
-		@if ( Game.InGame )
-		{
-			<a href="/active">Current Game</a>
-			<a onclick=@LeaveGame>Leave Game</a>
+		@if ( Game.InGame ) {
+			<a class="button" href="/active">Current Game</a>
+			<p class="button" onclick=@LeaveGame>Leave Game</p>
 			<spacer></spacer>
-		}
-		else
-		{
-			<a href="/create">Create Game</a>
-		}
-		<a>Browse Sessions</a>
+		} else {<a class="button" href="/create">Create Game</a>}
+		<a class="button" href="/sessions">Browse Sessions</a>
 		<spacer></spacer>
-		<a @onclick=@Game.Menu.Close>Quit</a>
+		<p class="button" @onclick=@Game.Menu.Close>Quit</p>
 	</div>
 </root>
 

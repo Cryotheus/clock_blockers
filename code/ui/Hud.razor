@@ -1,20 +1,47 @@
 @using Sandbox;
 @using Sandbox.UI;
 
-@namespace ClockBlockers
+@namespace ClockBlockers.UI
 @inherits RootPanel
 @attribute [StyleSheet]
 
 <root>
-    <ChatBox/>
-    <VoiceList/>
+	<ChatBox/>
+	<VoiceList/>
 
-    <div class="header">
-        <label>Shooter Game</label>
-        <label class="subtitle">A template to kick start the production of your own games.</label>
-    </div>
+	<div class="health">
+		<label>Health</label>
+		<label @ref="HealthLabel">set me please!</label>
+	</div>
+
+	<div class="crosshair">
+		X
+	</div>
+
+	<div class="header">
+		<label>Timer or something</label>
+		<label>What I wouldn't give for a handful of pistachios.</label>
+	</div>
 </root>
 
 @code
 {
+	public bool Alive { get; set; } = true;
+	public bool Spectating { get; set; } = false;
+	Label HealthLabel;
+
+	public float GetHealth() {
+		//TODO: update health label manually
+		var pawn = Game.LocalPawn;
+
+		if (pawn != null) {
+			Log.Info("health! " + pawn.Health);
+
+			return pawn.Health;
+		}
+
+		Log.Info("no health");
+
+		return 0f;
+	}
 }

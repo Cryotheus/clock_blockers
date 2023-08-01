@@ -17,12 +17,12 @@
 	{
 		DefaultUrl = "/";
 
-		AddDestination( "/", typeof(FrontPage));
+		AddDestination("/", typeof(FrontPage));
 		//AddDestination( "/load", typeof(LoadGamePage));
-		AddDestination( "/create", typeof(CreateGamePage));
-		//AddDestination(  "/active", typeof(ActivePage));
-		//AddDestination( "/servers", typeof(ServerListPage));
-		//AddDestination( "/settings", typeof(SettingsPage));
+		AddDestination("/create", typeof(CreateGamePage));
+		//AddDestination("/active", typeof(ActivePage));
+		AddDestination("/sessions", typeof(BrowseSessionsPage));
+		//AddDestination("/settings", typeof(SettingsPage));
 
 		if (Game.InGame) {
 			Navigate("/active");
@@ -30,8 +30,8 @@
 			Navigate("/");
 		}
 
-		BindClass( "ingame", () => Game.InGame );
-		BindClass( "inlobby", () => Game.Menu?.Lobby != null);
+		BindClass("ingame", () => Game.InGame);
+		BindClass("inlobby", () => Game.Menu?.Lobby != null);
 	}
 
 	//[GameEvent.Menu.ServerJoined]

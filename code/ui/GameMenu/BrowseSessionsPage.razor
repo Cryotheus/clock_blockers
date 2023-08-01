@@ -1,0 +1,29 @@
+﻿@using System
+@using Sandbox;
+@using Sandbox.MenuSystem;
+@using Sandbox.UI;
+@namespace ClockBlockers.UI.GameMenu
+
+<root class="root-browser">
+	<div class="simple-container">
+		<div class="navigation-bar">
+			<a class="home-button"><img class="mdi-button" src="menu/mdi/home.svg"></a>
+			<h3>Session Browser</h3>
+		</div>
+
+		<div class="session-list">
+			<ServerListPanel @ref="ServerList" ShowGame=@false FilterByGame="facepunch.sandbox"></ServerListPanel>
+		</div>
+
+		<div class="footer">
+			<p class="button center" onclick="@(() => ServerList.Refresh())">Refresh</p>
+		</div>
+	</div>
+
+</root>
+
+
+@code
+{
+    ServerListPanel ServerList;
+}
