@@ -34,7 +34,7 @@ public partial class ClockBlockersGame : Sandbox.GameManager
 	{
 		if ( Game.IsClient )
 		{
-			Game.RootPanel = new Hud();
+			Game.RootPanel = new HUDRootPanel();
 		}
 	}
 

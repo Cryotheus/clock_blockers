@@ -14,8 +14,11 @@ public partial class Pistol : BaseFirearm
 
 	public void PrimaryFire()
 	{
-		BulletInfo bullet = BulletHelper.FromWeapon( this, 10f );
-		FireBullet( bullet );
+		using (LagCompensation())
+		{
+			BulletInfo bullet = BulletHelper.FromWeapon( this, 20f );
+			FireBullet( bullet );
+		}
 		DoShootEffects();
 	}
 
@@ -31,6 +34,8 @@ public partial class Pistol : BaseFirearm
 	public override void DoShootEffects()
 	{
 		base.DoShootEffects();
+
+		if ( !Prediction.FirstTime ) return;
 		Pawn?.PlaySound( "rust_pumpshotgun.shoot" );
 
 		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );

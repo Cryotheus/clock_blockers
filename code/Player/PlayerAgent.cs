@@ -55,6 +55,7 @@ partial class PlayerAgent : AnimatedEntity
 		Predictable = true;
 		EnableHitboxes = true;
 
+		EnableLagCompensation = true;
 
 		MoveToSpawnpoint();
 		Event.Run( "Player.PostSpawn", this );

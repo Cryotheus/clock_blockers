@@ -41,7 +41,7 @@
         "Name": "Test Map",
         "GameIdent": "igrium.clock_blockers#local",
         "MapName": "test/testmap.vmap",
-        "MaxPlayers": 1,
+        "MaxPlayers": 2,
         "GameSettings": {},
         "Addons": "",
         "PreLaunchCommand": "",

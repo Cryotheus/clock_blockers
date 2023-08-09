@@ -56,8 +56,9 @@ public static class PersistentEntities
 	/// <param name="entity">The entity.</param>
 	/// <param name="generate">If this entity doesn't have a persistent ID, generate one.</param>
 	/// <returns>The ID</returns>
-	public static string? GetPersistentID( this Entity entity, bool generate = false )
+	public static string? GetPersistentID( this Entity? entity, bool generate = false )
 	{
+		if ( entity == null ) return null;
 		if ( entity.HammerID != null ) return entity.HammerID;
 
 		if ( entity.Components.TryGet<PersistentEntity>( out var component ) )

@@ -17,7 +17,7 @@ namespace ClockBlockers;
 
 public partial class Round : EntityComponent<ClockBlockersGame>, ISingletonComponent
 {
-	public static readonly float ROUND_TIME = 23;
+	public static readonly float ROUND_TIME = 10;
 
 	private LinkedList<PlayerAgent> Pawns = new();
 
@@ -62,7 +62,7 @@ public partial class Round : EntityComponent<ClockBlockersGame>, ISingletonCompo
 		foreach ( var client in Game.Clients )
 		{
 			var oldPawn = client.Pawn;
-			SpawnPlayerPawn( client, weapon: WeaponTypes.Get( WeaponTypes.SHOTGUN ) );
+			SpawnPlayerPawn( client, weapon: WeaponTypes.Get( WeaponTypes.PISTOL ) );
 			oldPawn?.Delete();
 			clients++;
 		}

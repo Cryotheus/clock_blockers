@@ -177,3 +177,33 @@ A potential solution is to have "togglable actions", a sub-interface of `Action`
 - Each togglable action has a unique string ID. If a new action is started with that ID or a `StopAction` is added with that ID, the action is disabled. Until then, it gets added to a map of "active actions", which can be queried at any time by code.
 
 - An `OnStopped` method is added, which is called when the action is disabled. This is called *before* any replacement method's `Run` method is called.
+
+# Retroactive Events
+
+In my original design of the timeline system, the timeline was only able to branch on pre-established events. However, as the codebase matures, I've begun to think that this is not such a great idea.
+
+The fundamental reasoning behind this rule is that it would reduce complexity. For instance, rather than extensive checks and comparisons between the original timeline and the current one, triggers would be placed at everything that could cause an unlink.
+
+However, what I didn't foresee is the fact that map conditions can change and affect remnants without them moving. For instance, what if a remnant is standing in an un-moving elevator and a free-agent suddenly presses the button. Logically, this should unlink the remnant. However, because there was no action in the original timeline that would warrant checking the elevator's state, there is no branching event, and an unlink cannot occur.
+
+One potential solution to this is *retroactive events*.
+
+The idea is, if something happens in a future timeline that causes a spontaneous unlink, an event can be added retroactively to a remnant's timeline tree. This event would have all the same characteristics as a normal event, and future rounds will treat it as such.
+
+With this new system, doorways, weapon pickups, etc will still have triggers and save events as before. The only change is that events can be added to timelines being recorded *and* timelines being played back. This way, spontaneous unlinks can take place, and they will remain persistent in the timeline tree like with regular unlinks.
+
+## Caveats
+
+There are a few things to take into consideration when designing retroactive events.
+
+- Timing
+  
+  The first potential caveat is timing. With normal events, we can "gatekeep" a corresponding action by putting it in the post-event timeline branch. With spontaneous unlinks, however, the unlinking action does not belong to that remnant's timeline tree.
+  
+  For instance, looking back at the elevator example, If the event is processed on the same tick as the button press, the button press *must* be processed before the remnant's tick during playback. If it's not, then the remnant will unlink when it appears it shouldn't.
+  
+  A potential solution to this is to give spontaneous events a "grace period" between the event and the unlink. This would give the unlinking event time to occur in future rounds. However, this could lead to visual weirdness if taken too far, with remnant unlinks appearing delayed.
+
+- What counts as an event?
+  
+  It's tempting to give many gameplay mechanics the potential to cause spontaneous unlinks. However, it's best to leave these to "binary" state changes, such as the movement of an elevator. It's important for the player to know *when* it's possible for an unlink to take place when reviewing the round.l

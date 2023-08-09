@@ -1,6 +1,7 @@
 ﻿#nullable enable
 
 using ClockBlockers.Anim;
+using ClockBlockers.Timeline;
 using Sandbox;
 using System;
 using System.Collections.Generic;
@@ -37,22 +38,61 @@ public abstract partial class BaseFirearm : Carriable
 	/// </summary>
 	/// <param name="bullet">The bullet to shoot.</param>
 	/// <param name="isRemnant">If this is being shot by a remnant.</param>
-	public virtual void FireBullet(BulletInfo bullet, bool isRemnant = false)
+	public virtual void FireBullet( BulletInfo bullet, bool isRemnant = false )
 	{
 		Vector3 start = bullet.Ray.Position;
 		Vector3 end = bullet.Ray.Project( 2048 );
 		float radius = bullet.Radius;
 
-		foreach (var tr in DoBulletTrace(start, end, radius))
+		// Store the lag-compensated positions of all hit entities.
+		Dictionary<string, EntityTraceState> entityPositions = new();
+		ShootAction.Builder actionBuilder = new ShootAction.Builder();
+
+		foreach ( var tr in DoBulletTrace( start, end, radius ) )
 		{
 			if ( !tr.Hit ) continue;
 			DealDamage( tr, bullet );
 			tr.Surface.DoBulletImpact( tr );
+
+			string? id = tr.Entity.GetPersistentID();
+			var entity = tr.Entity;
+			if ( id != null && entity is ModelEntity modelEntity )
+			{
+				entityPositions.Add( id, new EntityTraceState().CopyFrom( modelEntity ) );
+			}
+			actionBuilder.AddHitResult( tr );
+			if ( Prediction.FirstTime )
+			{
+			}
 		}
 
-		if (Owner is PlayerAgent player && player.IsRecording)
+		if ( Game.IsServer && Owner is PlayerAgent player && player.IsRecording )
 		{
-			player.AnimCapture?.AddAction( new ShootAction( bullet ) );
+			player.AnimCapture?.AddAction( actionBuilder.Build( bullet ) );
+		}
+	}
+
+	/// <summary>
+	/// Perform a bullet trace.
+	/// </summary>
+	/// <param name="start">Trace start point</param>
+	/// <param name="end">Trace end point</param>
+	/// <param name="radius">Trace radius</param>
+	/// <returns>All of the entities that were hit (or penetrated), in order.</returns>
+	public IEnumerable<TraceResult> DoBulletTrace( Vector3 start, Vector3 end, Entity ignoreEntity, float radius = 2f )
+	{
+		var trace = Trace.Ray( start, end )
+			.Radius( radius )
+			.UseHitboxes()
+			.Ignore( Owner )
+			.WithAnyTags( "solid", "player", "npc", "penetrable", "corpse", "glass", "water", "carriable" )
+			.WithoutTags( "trigger", "skybox", "playerclip" );
+
+		foreach ( var result in trace.RunAll() )
+		{
+			yield return result;
+			if ( !IsPenetrable( result.Entity ) )
+				yield break;
 		}
 	}
 
@@ -65,22 +105,10 @@ public abstract partial class BaseFirearm : Carriable
 	/// <returns>All of the entities that were hit (or penetrated), in order.</returns>
 	protected IEnumerable<TraceResult> DoBulletTrace( Vector3 start, Vector3 end, float radius = 2f )
 	{
-		var trace = Trace.Ray( start, end )
-			.Radius( radius )
-			.UseHitboxes()
-			.Ignore( Owner )
-			.WithAnyTags( "solid", "player", "npc", "penetrable", "corpse", "glass", "water", "carriable" )
-			.WithoutTags( "trigger", "skybox", "playerclip" );
-
-		foreach (var result in trace.RunAll())
-		{
-			yield return result;
-			if ( !IsPenetrable( result.Entity ) )
-				yield break;
-		}
+		return DoBulletTrace( start, end, Owner, radius );
 	}
 
-	protected virtual void DealDamage( TraceResult tr, BulletInfo bullet )
+	public virtual void DealDamage( TraceResult tr, BulletInfo bullet )
 	{
 		using ( Prediction.Off() )
 		{
@@ -103,7 +131,7 @@ public abstract partial class BaseFirearm : Carriable
 
 	public virtual void DoShootEffects()
 	{
-		if ( Owner is PlayerAgent player && player.IsRecording )
+		if ( Game.IsServer && Owner is PlayerAgent player && player.IsRecording )
 			player.AnimCapture?.AddAction( new ShootEffectsAction( IsFireContinuous ) );
 	}
 

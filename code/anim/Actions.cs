@@ -118,12 +118,12 @@ public struct PickupWeaponAction : IAction
 {
 	public string WeaponID { get; set; }
 
-	public PickupWeaponAction(string weaponID)
+	public PickupWeaponAction( string weaponID )
 	{
 		WeaponID = weaponID;
 	}
 
-	public PickupWeaponAction(Carriable weapon)
+	public PickupWeaponAction( Carriable weapon )
 	{
 		WeaponID = weapon.GetPersistentIDOrCreate();
 	}
@@ -137,24 +137,6 @@ public struct PickupWeaponAction : IAction
 	}
 }
 
-public struct ShootAction : IAction
-{
-	public BulletInfo Bullet { get; init; }
-
-	public ShootAction( BulletInfo bullet )
-	{
-		Bullet = bullet;
-	}
-
-	public bool Run( PlayerAgent pawn )
-	{
-		if ( pawn.ActiveWeapon is BaseFirearm firearm )
-		{
-			firearm.FireBullet( Bullet, true );
-		}
-		return false;
-	}
-}
 
 public struct ShootEffectsAction : IAction
 {

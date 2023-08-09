@@ -53,6 +53,7 @@ public class AnimCapture : EntityComponent<PlayerAgent>, ISingletonComponent
 	public void Tick()
 	{
 		if ( !IsRecording || Animation == null ) return;
+		if ( _startTime < 0 ) _startTime = 0;
 
 		int segmentIndex = (int)MathF.Floor( _startTime );
 

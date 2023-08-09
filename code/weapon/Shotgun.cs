@@ -21,13 +21,17 @@ public partial class Shotgun : BaseFirearm
 
 	public virtual void PrimaryFire()
 	{
-		BulletInfo[] bullets = new BulletInfo[SHOT_COUNT];
-		for ( int i = 0; i < SHOT_COUNT; i++ )
+
+		using (LagCompensation())
 		{
-			bullets[i] = BulletHelper.FromWeapon( this, 10f, spread: .25f );
+			BulletInfo[] bullets = new BulletInfo[SHOT_COUNT];
+			for ( int i = 0; i < SHOT_COUNT; i++ )
+			{
+				bullets[i] = BulletHelper.FromWeapon( this, 10f, spread: .25f );
+			}
+			FireBullets( bullets );
 		}
 
-		FireBullets( bullets );
 		DoShootEffects();
 		LastFire = 0;
 	}
@@ -44,6 +48,8 @@ public partial class Shotgun : BaseFirearm
 	public override void DoShootEffects()
 	{
 		base.DoShootEffects();
+
+		if ( !Prediction.FirstTime ) return;
 		Pawn?.PlaySound( "rust_pistol.shoot" );
 
 		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
