@@ -2,6 +2,7 @@
 
 using ClockBlockers.Spectator;
 using ClockBlockers.Timeline;
+using ClockBlockers.UI;
 using Sandbox;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ public partial class ClockBlockersGame : Sandbox.GameManager
 	{
 		if ( Game.IsClient )
 		{
-			Game.RootPanel = new UI.Hud();
+			Game.RootPanel = new Hud();
 		}
 	}
 

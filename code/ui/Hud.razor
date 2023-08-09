@@ -1,5 +1,8 @@
 @using Sandbox;
+@using Sandbox.MenuSystem;
 @using Sandbox.UI;
+@using Sandbox.UI.GameMenu;
+@using System
 
 @namespace ClockBlockers.UI
 @inherits RootPanel
@@ -9,39 +12,25 @@
 	<ChatBox/>
 	<VoiceList/>
 
-	<div class="health">
+	<div @ref="HealthPanel" class="health">
 		<label>Health</label>
 		<label @ref="HealthLabel">set me please!</label>
 	</div>
 
-	<div class="crosshair">
+	<div @ref="CrosshairPanel" class="crosshair">
 		X
 	</div>
 
-	<div class="header">
+	<div @ref="TimerPanel" class="header">
 		<label>Timer or something</label>
-		<label>What I wouldn't give for a handful of pistachios.</label>
+		<label @ref="TimerLabel">set me please!</label>
 	</div>
 </root>
 
-@code
-{
-	public bool Alive { get; set; } = true;
-	public bool Spectating { get; set; } = false;
-	Label HealthLabel;
-
-	public float GetHealth() {
-		//TODO: update health label manually
-		var pawn = Game.LocalPawn;
-
-		if (pawn != null) {
-			Log.Info("health! " + pawn.Health);
-
-			return pawn.Health;
-		}
-
-		Log.Info("no health");
-
-		return 0f;
-	}
+@code {
+	public Label HealthLabel;
+	public Label TimerPanel;
+	public Panel CrosshairPanel;
+	public Panel HealthPanel;
+	public Panel TimerLabel;
 }
